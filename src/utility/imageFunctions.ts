@@ -10,8 +10,11 @@ const drawImage = (imagePath: string, canvas: HTMLCanvasElement) => {
         // 画像ロードが完了してからキャンバスの準備をする
         image.onload = () => {
             // キャンバスのサイズを画像サイズに合わせる
-            canvas.width = image.width;
-            canvas.height = image.height;
+            canvas.width = image.width * 2;
+            canvas.height = image.height * 2;
+            canvas.style.width = `${canvas.width / 8}px`;
+            canvas.style.height = `${canvas.height / 8}px`;
+            ctx.scale(2,2);
             // キャンバスに画像を描画（開始位置0,0）
             ctx.drawImage(image, 0, 0);
             resolve();
