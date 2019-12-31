@@ -8,3 +8,19 @@ html, body {
     font-family: 'Hiragino Sans', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', YuGothic, 'Yu Gothic', '游ゴシック  Medium', Meiryo, sans-serif;
     max-width: 100%;
 }
+
+section {
+    position: relative;
+}
+
+section:before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* 1:1 */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -5,11 +5,13 @@ import {drawImage} from "../utility/imageFunctions";
 const App: React.FC = () => {
     const [scale, setScale] = useState(1);
     const canvas = useRef<HTMLCanvasElement | null>(null);
+    const canvas2 = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
-        if (canvas.current === null) {
+        if (canvas.current === null || canvas2.current === null) {
             return;
         }
-        drawImage("/img/thinking_face.png", canvas.current, scale).then();
+        drawImage("/img/thinking_face_hand.png", canvas.current, scale).then();
+        drawImage("/img/thinking_face_without_hand.png", canvas2.current, scale).then();
     }, [scale]);
 
     const handleInput = (e: FormEvent<HTMLInputElement>) => {
@@ -21,11 +23,11 @@ const App: React.FC = () => {
     };
 
     return <div>
-        <h1>🤔</h1>
-        <input type="range" onInput={handleInput} min="50" max="200" defaultValue="100"/>
         <section>
-            <canvas ref={canvas}/>
+            <canvas id="canvas2" ref={canvas2}/>
+            <canvas id="canvas1" ref={canvas}/>
         </section>
+        <input type="range" onInput={handleInput} min="50" max="200" defaultValue="100"/>
     </div>;
 };
 
